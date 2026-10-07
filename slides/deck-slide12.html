@@ -1,0 +1,97 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+@font-face { font-family:'Orbitron'; src:url('../fonts/Orbitron-900.ttf'); font-weight:900; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-400.ttf'); font-weight:400; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-700.ttf'); font-weight:700; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1920px; height:1080px; position:relative; overflow:hidden;
+  background:#101a55; font-family:'Inter',sans-serif; }
+.bg { position:absolute; inset:0; width:1920px; height:1080px; object-fit:cover; }
+.scrim { position:absolute; inset:0;
+  background:radial-gradient(1100px 480px at 50% 6%, rgba(5,7,22,.62) 0%, rgba(5,7,22,0) 70%); }
+.head { position:absolute; top:52px; left:0; width:1920px; text-align:center; }
+.head h2 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:60px; letter-spacing:2px;
+  line-height:1.3;
+  background:linear-gradient(93deg,#7aa8ff 0%,#3b82f6 40%,#06b6d4 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 22px rgba(0,0,0,.8)); }
+.head .sub { margin-top:16px; font-size:36px; color:#fff; font-weight:700;
+  text-shadow:0 3px 16px rgba(0,0,0,.9); }
+.chevrons { position:absolute; left:240px; top:330px; width:1440px; height:180px; }
+.chev { position:absolute; top:0; }
+.ph { position:absolute; top:540px; width:288px; text-align:center; }
+.ph .dot { width:16px; height:16px; border-radius:50%; background:#fff; margin:0 auto;
+  box-shadow:0 0 14px rgba(255,255,255,.8); }
+.ph .dl { width:3px; height:56px; margin:0 auto;
+  background:repeating-linear-gradient(180deg, #5b8cff 0 8px, transparent 8px 16px); opacity:.7; }
+.ph .t1 { margin-top:14px; font-size:30px; font-weight:700; letter-spacing:1px;
+  text-shadow:0 3px 14px rgba(0,0,0,.9); }
+.ph .t1.cy { color:#22d3ee; } .ph .t1.pu { color:#8b7cf8; }
+.ph .t2 { margin-top:12px; font-size:26px; line-height:1.6; color:#dfe4fa;
+  text-shadow:0 2px 12px rgba(0,0,0,.9); }
+</style></head><body>
+<img class="bg" src="../evolution-background-v3.png">
+<div class="scrim"></div>
+<div class="head">
+  <h2>ONE ECOSYSTEM data-stage="1", TWO PIECES OF HARDWARE</h2>
+  <div class="sub" data-stage="2">This Is the Bigger Picture</div>
+</div>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <linearGradient id="chC" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#6fe0fa"/><stop offset="55%" stop-color="#1fa8e8"/>
+    <stop offset="100%" stop-color="#0f6da8"/>
+  </linearGradient>
+  <linearGradient id="chP" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#a89bfc"/><stop offset="55%" stop-color="#5f54e8"/>
+    <stop offset="100%" stop-color="#372aa8"/>
+  </linearGradient>
+  <linearGradient id="chD" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#2a3470"/><stop offset="100%" stop-color="#0b0f2c"/>
+  </linearGradient>
+  <linearGradient id="chG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#ffffff" stop-opacity=".45"/>
+    <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+  </linearGradient>
+</defs></svg>
+<div class="chevrons" data-stage="3">
+  <svg class="chev" style="left:0;" width="320" height="180" viewBox="0 0 320 180">
+    <polygon points="14,14 262,14 312,94 262,174 14,174 64,94" fill="url(#chD)"/>
+    <polygon points="0,0 250,0 300,80 250,160 0,160 50,80" fill="url(#chC)"/>
+    <polygon points="0,0 250,0 300,80 275,80 225,0 0,0" fill="url(#chG)" opacity=".5"/>
+    <text x="135" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="34" fill="#fff">PHASE 1</text>
+  </svg>
+  <svg class="chev" style="left:280px;" width="320" height="180" viewBox="0 0 320 180">
+    <polygon points="14,14 262,14 312,94 262,174 14,174 64,94" fill="url(#chD)"/>
+    <polygon points="0,0 250,0 300,80 250,160 0,160 50,80" fill="url(#chP)"/>
+    <polygon points="0,0 250,0 300,80 275,80 225,0 0,0" fill="url(#chG)" opacity=".5"/>
+    <text x="135" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="34" fill="#fff">PHASE 2</text>
+  </svg>
+  <svg class="chev" style="left:560px;" width="320" height="180" viewBox="0 0 320 180">
+    <polygon points="14,14 262,14 312,94 262,174 14,174 64,94" fill="url(#chD)"/>
+    <polygon points="0,0 250,0 300,80 250,160 0,160 50,80" fill="url(#chC)"/>
+    <polygon points="0,0 250,0 300,80 275,80 225,0 0,0" fill="url(#chG)" opacity=".5"/>
+    <text x="135" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="34" fill="#fff">PHASE 3</text>
+  </svg>
+  <svg class="chev" style="left:840px;" width="320" height="180" viewBox="0 0 320 180">
+    <polygon points="14,14 262,14 312,94 262,174 14,174 64,94" fill="url(#chD)"/>
+    <polygon points="0,0 250,0 300,80 250,160 0,160 50,80" fill="url(#chP)"/>
+    <polygon points="0,0 250,0 300,80 275,80 225,0 0,0" fill="url(#chG)" opacity=".5"/>
+    <text x="135" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="34" fill="#fff">PHASE 4</text>
+  </svg>
+  <svg class="chev" style="left:1120px;" width="320" height="180" viewBox="0 0 320 180">
+    <polygon points="14,14 262,14 312,94 262,174 14,174 64,94" fill="url(#chD)"/>
+    <polygon points="0,0 250,0 300,80 250,160 0,160 50,80" fill="url(#chC)"/>
+    <polygon points="0,0 250,0 300,80 275,80 225,0 0,0" fill="url(#chG)" opacity=".5"/>
+    <text x="135" y="95" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="34" fill="#fff">PHASE 5</text>
+  </svg>
+</div>
+<div class="ph" data-stage="3" style="left:240px;"><div class="dl"></div><div class="dot"></div>
+  <div class="t1 cy">BEACON</div><div class="t2">Build the decentralized infrastructure</div></div>
+<div class="ph" data-stage="3" style="left:528px;"><div class="dl"></div><div class="dot"></div>
+  <div class="t1 pu">RHODEUM<br>MINER</div><div class="t2">Deploy smart tools into fleets</div></div>
+<div class="ph" data-stage="3" style="left:816px;"><div class="dl"></div><div class="dot"></div>
+  <div class="t1 cy">REAL-WORLD<br>DATA</div><div class="t2">Truck activity generates useful information</div></div>
+<div class="ph" data-stage="3" style="left:1104px;"><div class="dl"></div><div class="dot"></div>
+  <div class="t1 pu">NETWORK<br>VALIDATION</div><div class="t2">Distributed infrastructure supports verification</div></div>
+<div class="ph" data-stage="3" style="left:1392px;"><div class="dl"></div><div class="dot"></div>
+  <div class="t1 cy">RHODEUM<br>ECOSYSTEM</div><div class="t2">Industrial activity + blockchain + digital rewards</div></div>
+</body></html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+@font-face { font-family:'Orbitron'; src:url('../fonts/Orbitron-900.ttf'); font-weight:900; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-400.ttf'); font-weight:400; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-700.ttf'); font-weight:700; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1920px; height:1080px; position:relative; overflow:hidden;
+  background:#101a55; font-family:'Inter',sans-serif; }
+.bg { position:absolute; inset:0; width:1920px; height:1080px; object-fit:cover; }
+.scrim { position:absolute; inset:0;
+  background:radial-gradient(900px 420px at 50% 8%, rgba(5,7,22,.6) 0%, rgba(5,7,22,0) 70%); }
+.title { position:absolute; top:38px; left:0; width:1920px; text-align:center; }
+.title h2 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:60px; letter-spacing:1px;
+  background:linear-gradient(93deg,#7aa8ff 0%,#3b82f6 40%,#06b6d4 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 22px rgba(0,0,0,.8)); }
+.title p { margin-top:10px; font-size:32px; color:#fff; font-weight:700;
+  text-shadow:0 3px 18px rgba(0,0,0,.9); }
+svg.wires { position:absolute; inset:0; }
+.man { position:absolute; left:770px; top:450px; width:380px; height:380px;
+  filter:drop-shadow(0 0 50px rgba(80,120,255,.55)); }
+.stmt { position:absolute; transform:translate(-50%,-50%); text-align:center; max-width:300px;
+  padding:18px 26px; border-radius:16px;
+  background:linear-gradient(165deg, rgba(20,26,70,.78), rgba(10,12,35,.82));
+  border:1px solid rgba(150,170,255,.3);
+  box-shadow:0 10px 34px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.12); }
+.stmt .n { font-family:'Orbitron',sans-serif; font-weight:900; font-size:22px; color:#22d3ee;
+  letter-spacing:3px; margin-bottom:8px; text-shadow:0 0 16px rgba(34,211,238,.7); }
+.stmt .t { font-size:29px; font-weight:700; color:#fff; line-height:1.35;
+  text-shadow:0 2px 14px rgba(0,0,0,.9); }
+</style></head><body>
+<img class="bg" src="../evolution-background-v3.png">
+<div class="scrim"></div>
+<div class="title">
+  <h2 data-stage="1">Why UltraLift Was Created</h2>
+  <p data-stage="2">Manual Trailer Landing Gear</p>
+</div>
+<svg class="wires" data-stage="3" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <filter id="gl" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g stroke="#5b8cff" stroke-width="4" opacity="0.85" filter="url(#gl)">
+    <line x1="960" y1="640" x2="960" y2="300"/>
+    <line x1="960" y1="640" x2="1254" y2="470"/>
+    <line x1="960" y1="640" x2="1254" y2="810"/>
+    <line x1="960" y1="640" x2="960" y2="980"/>
+    <line x1="960" y1="640" x2="666" y2="810"/>
+  </g>
+  <g fill="#9fc0ff" filter="url(#gl)">
+    <circle cx="960" cy="300" r="9"/><circle cx="1254" cy="470" r="9"/>
+    <circle cx="1254" cy="810" r="9"/><circle cx="960" cy="980" r="9"/>
+    <circle cx="666" cy="810" r="9"/>
+  </g>
+</svg>
+<img class="man" data-stage="3" src="../art/slide3-man-circle-v1.png">
+<div class="stmt" style="left:960px; top:300px;"><div class="n">01</div><div class="t">Driver injury exposure</div></div>
+<div class="stmt" style="left:1254px; top:470px;"><div class="n">02</div><div class="t">Repetitive physical strain</div></div>
+<div class="stmt" style="left:1254px; top:810px;"><div class="n">03</div><div class="t">Downtime</div></div>
+<div class="stmt" style="left:960px; top:980px;"><div class="n">04</div><div class="t">Lost productivity</div></div>
+<div class="stmt" style="left:666px; top:810px;"><div class="n">05</div><div class="t">Outdated manual process</div></div>
+</body></html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+@font-face { font-family:'Orbitron'; src:url('../fonts/Orbitron-900.ttf'); font-weight:900; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-400.ttf'); font-weight:400; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-700.ttf'); font-weight:700; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1920px; height:1080px; position:relative; overflow:hidden;
+  background:#0e0e2a; font-family:'Inter',sans-serif; }
+.bg { position:absolute; inset:0; width:1920px; height:1080px; object-fit:cover; }
+.scrim { position:absolute; inset:0;
+  background:
+    radial-gradient(900px 600px at 22% 45%, rgba(6,4,18,.78) 0%, rgba(6,4,18,0) 70%),
+    linear-gradient(180deg, rgba(6,4,18,.5) 0%, rgba(6,4,18,0) 30%); }
+.logo { position:absolute; left:80px; top:56px; width:300px;
+  filter:drop-shadow(0 2px 12px rgba(0,0,0,.7)); }
+.titleblock { position:absolute; left:80px; top:300px; width:820px; }
+h1 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:104px; line-height:1.12;
+  letter-spacing:2px;
+  background:linear-gradient(93deg,#7aa8ff 0%,#3b82f6 35%,#06b6d4 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 26px rgba(0,0,0,.85)); }
+.divider { width:220px; height:8px; margin:44px 0 40px;
+  background:linear-gradient(90deg,#06b6d4,#3b82f6); border-radius:4px;
+  box-shadow:0 0 24px rgba(6,182,212,.7); }
+.sub { font-size:35px; line-height:1.55; color:#e8ebfb; max-width:760px;
+  text-shadow:0 3px 20px rgba(0,0,0,.9), 0 1px 6px rgba(0,0,0,.95); }
+.evo { position:absolute; right:120px; top:110px; width:640px;
+  display:flex; flex-direction:column; align-items:center; }
+.evo img.tool { filter:drop-shadow(0 0 44px rgba(80,90,220,.45)) drop-shadow(0 14px 30px rgba(0,0,0,.6)); }
+.evo img.arrow { margin:6px 0; filter:drop-shadow(0 0 30px rgba(59,130,246,.8)); }
+.glowline { width:420px; height:3px; margin:26px 0 0;
+  background:linear-gradient(90deg, transparent, rgba(139,92,246,.8), transparent); }
+</style></head><body>
+<img class="bg" src="../evolution-background-v3.png">
+<div class="scrim"></div>
+<img class="logo" data-stage="3" src="../art/rhodeum-logo-v1.png">
+<div class="titleblock">
+  <h1 data-stage="1">FROM<br>ULTRALIFT<br>TO RHODEUM</h1>
+  <div class="divider" data-stage="3"></div>
+  <div class="sub" data-stage="2">How a Trucking Safety Tool Evolved Into a Blockchain Infrastructure Ecosystem</div>
+</div>
+<div class="evo">
+  <img class="tool" data-stage="3" src="../assets/ultralift-crank-transparent.png" width="500">
+  <img class="arrow" data-stage="3" src="../art/arrow-down-v1.png" width="150">
+  <img class="tool" data-stage="3" src="../assets/rhodeum-tool-transparent.png" width="500">
+  <div class="glowline" data-stage="3"></div>
+</div>
+</body></html>

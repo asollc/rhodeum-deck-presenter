@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Rhodeum Deck Presenter</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0a0e28; color:#e8ebfb; font-family:Arial, sans-serif; min-height:100vh; }
+  /* ---------- Library ---------- */
+  #library { max-width:1400px; margin:0 auto; padding:28px 20px 60px; }
+  #library header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:24px; }
+  #library h1 { font-size:26px; letter-spacing:1px; }
+  #library h1 span { color:#22d3ee; }
+  .toolbar { display:flex; gap:12px; flex-wrap:wrap; }
+  .btn { border:0; border-radius:12px; padding:14px 26px; font-size:17px; font-weight:700; cursor:pointer; color:#fff;
+    background:linear-gradient(135deg,#3b82f6,#8b5cf6); box-shadow:0 6px 20px rgba(59,130,246,.4); }
+  .btn:active { transform:scale(.97); }
+  .btn.upload { background:linear-gradient(135deg,#0ea5e9,#22d3ee); box-shadow:0 6px 20px rgba(34,211,238,.35); }
+  .btn input { display:none; }
+  #grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:18px; }
+  .thumb { position:relative; border-radius:12px; overflow:hidden; cursor:pointer; border:2px solid rgba(120,140,255,.25);
+    background:#141b45; transition:border-color .2s, transform .15s; }
+  .thumb:hover { border-color:#22d3ee; transform:translateY(-2px); }
+  .thumb img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; }
+  .thumb .cap { padding:10px 12px; font-size:14px; display:flex; justify-content:space-between; align-items:center; }
+  .thumb .del { background:#ef4444; border:0; color:#fff; border-radius:8px; padding:6px 12px; font-size:13px; cursor:pointer; }
+  .thumb.uploaded { border-color:rgba(163,230,53,.5); }
+  .hint { margin-top:26px; color:#8a93c8; font-size:14px; line-height:1.7; }
+  /* ---------- Stage ---------- */
+  #stage { position:fixed; inset:0; background:#000; display:flex; align-items:center; justify-content:center; z-index:50; }
+  #stage[hidden] { display:none; }
+  #viewport { position:relative; }
+  #frame { width:1920px; height:1080px; border:0; display:block; transform-origin:top left; background:#0e0e2a; }
+  #imgSlide { display:block; max-width:100%; max-height:100%; object-fit:contain; }
+  #imgSlide[hidden] { display:none; }
+  #clicker { position:absolute; inset:0; z-index:5; cursor:pointer; background:transparent; }
+  #hud { position:fixed; bottom:0; left:0; right:0; display:flex; align-items:center; justify-content:space-between;
+    padding:14px 20px; background:linear-gradient(0deg,rgba(0,0,0,.75),transparent); z-index:60;
+    opacity:0; transition:opacity .3s; pointer-events:none; }
+  #stage:hover #hud, #hud.show { opacity:1; pointer-events:auto; }
+  #hud .count { font-size:16px; font-weight:700; }
+  #hud .dots { display:flex; gap:8px; }
+  #hud .dot { width:12px; height:12px; border-radius:50%; background:rgba(255,255,255,.25); }
+  #hud .dot.on { background:#22d3ee; box-shadow:0 0 10px #22d3ee; }
+  #hud button { background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); color:#fff;
+    border-radius:10px; padding:10px 18px; font-size:15px; cursor:pointer; }
+</style>
+</head>
+<body>
+<div id="library">
+  <header>
+    <h1>RHODEUM <span>DECK PRESENTER</span></h1>
+    <div class="toolbar">
+      <label class="btn upload">Upload Slides<input type="file" id="upload" multiple accept="image/*"></label>
+      <button class="btn" id="presentBtn">&#9654; Present</button>
+    </div>
+  </header>
+  <div id="grid"></div>
+  <div class="hint">
+    Click a thumbnail (or Present) to start. In presentation mode:<br>
+    &bull; Click, tap, Space, or &rarr; : reveal next (header &rarr; subheader &rarr; everything else, then next slide)<br>
+    &bull; &larr; : go back &nbsp;&bull; Esc : exit &nbsp;&bull; Home/End : first/last slide<br>
+    Uploaded images are stored in this browser and appended after slide 14.
+  </div>
+</div>
+
+<div id="stage" hidden>
+  <div id="viewport">
+    <iframe id="frame" title="slide"></iframe>
+    <img id="imgSlide" alt="slide" hidden>
+    <div id="clicker"></div>
+  </div>
+  <div id="hud">
+    <button id="exitBtn">&#10005; Exit</button>
+    <div class="dots" id="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    <div class="count" id="count">1 / 14</div>
+    <button id="backBtn">&larr; Back</button>
+  </div>
+</div>
+
+<script>
+const BUILTINS = [];
+for (let i = 1; i <= 14; i++) {
+  BUILTINS.push({ type:'html', file:'slides/deck-slide'+i+'.html', thumb:'thumbs/thumb'+i+'.png', title:'Slide '+i });
+}
+let slides = [...BUILTINS];
+
+/* ---------- IndexedDB for uploads ---------- */
+const DBN='rhodeum-presenter', ST='uploads';
+function db(){ return new Promise((res,rej)=>{
+  const r=indexedDB.open(DBN,1);
+  r.onupgradeneeded=()=>r.result.createObjectStore(ST,{keyPath:'id'});
+  r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error);
+});}
+async function dbPut(rec){ const d=await db(); return new Promise((res,rej)=>{
+  const t=d.transaction(ST,'readwrite').objectStore(ST).put(rec);
+  t.onsuccess=()=>res(); t.onerror=()=>rej(t.error); });}
+async function dbAll(){ const d=await db(); return new Promise((res,rej)=>{
+  const t=d.transaction(ST,'readonly').objectStore(ST).getAll();
+  t.onsuccess=()=>res(t.result||[]); t.onerror=()=>rej(t.error); });}
+async function dbDel(id){ const d=await db(); return new Promise((res,rej)=>{
+  const t=d.transaction(ST,'readwrite').objectStore(ST).delete(id);
+  t.onsuccess=()=>res(); t.onerror=()=>rej(t.error); });}
+
+/* ---------- Library ---------- */
+const grid=document.getElementById('grid');
+function renderGrid(){
+  grid.innerHTML='';
+  slides.forEach((s,i)=>{
+    const d=document.createElement('div');
+    d.className='thumb'+(s.type==='img'?' uploaded':'');
+    const im=document.createElement('img'); im.src=s.thumb||s.src; im.alt=s.title;
+    const cap=document.createElement('div'); cap.className='cap';
+    const nm=document.createElement('span'); nm.textContent=s.title;
+    cap.appendChild(nm);
+    if(s.type==='img'){
+      const del=document.createElement('button'); del.className='del'; del.textContent='Delete';
+      del.onclick=e=>{e.stopPropagation(); removeUpload(s.id);};
+      cap.appendChild(del);
+    }
+    d.appendChild(im); d.appendChild(cap);
+    d.onclick=()=>startPresent(i);
+    grid.appendChild(d);
+  });
+}
+async function removeUpload(id){
+  await dbDel(id);
+  const s=slides.find(x=>x.id===id);
+  if(s&&s.src.startsWith('blob:')) URL.revokeObjectURL(s.src);
+  slides=slides.filter(x=>x.id!==id);
+  renderGrid();
+}
+document.getElementById('upload').addEventListener('change', async e=>{
+  for(const file of e.target.files){
+    const id='up-'+Date.now()+'-'+Math.random().toString(36).slice(2,8);
+    await dbPut({id, name:file.name, blob:file});
+    slides.push({type:'img', id, title:file.name.replace(/\.[^.]+$/,''), src:URL.createObjectURL(file)});
+  }
+  e.target.value='';
+  renderGrid();
+});
+async function loadUploads(){
+  try{
+    const recs=await dbAll();
+    recs.forEach(r=>slides.push({type:'img', id:r.id, title:(r.name||'Upload').replace(/\.[^.]+$/,''), src:URL.createObjectURL(r.blob)}));
+  }catch(e){ console.warn('IDB unavailable', e); }
+  renderGrid();
+}
+
+/* ---------- Present mode ---------- */
+const stageEl=document.getElementById('stage'),
+      frame=document.getElementById('frame'),
+      imgSlide=document.getElementById('imgSlide'),
+      viewport=document.getElementById('viewport'),
+      countEl=document.getElementById('count'),
+      dotsEl=document.getElementById('dots'),
+      hud=document.getElementById('hud');
+let idx=0, stage=0, presenting=false;
+
+function fit(){
+  const s=Math.min(innerWidth/1920, innerHeight/1080);
+  frame.style.transform=`scale(${s})`;
+  viewport.style.width=1920*s+'px';
+  viewport.style.height=1080*s+'px';
+  imgSlide.style.maxWidth=innerWidth+'px';
+  imgSlide.style.maxHeight=innerHeight+'px';
+}
+addEventListener('resize', fit);
+
+function injectFade(doc){
+  const st=doc.createElement('style');
+  st.textContent='[data-stage]{transition:opacity .45s ease}';
+  doc.head.appendChild(st);
+}
+function setStage(n){
+  stage=n;
+  try{
+    const doc=frame.contentDocument;
+    doc.querySelectorAll('[data-stage]').forEach(el=>{
+      const on=+el.dataset.stage<=n;
+      el.style.opacity=on?'1':'0';
+      el.style.visibility=on?'visible':'hidden';
+    });
+  }catch(e){}
+  [...dotsEl.children].forEach((d,i)=>d.classList.toggle('on', i<n));
+}
+function showSlide(i){
+  idx=Math.max(0,Math.min(slides.length-1,i));
+  const s=slides[idx];
+  countEl.textContent=(idx+1)+' / '+slides.length;
+  if(s.type==='html'){
+    imgSlide.hidden=true; frame.hidden=false;
+    frame.onload=()=>{ injectFade(frame.contentDocument); setStage(0); };
+    if(frame.getAttribute('src')===s.file){
+      // reload to reset
+      frame.contentWindow.location.reload();
+    } else frame.src=s.file;
+  } else {
+    frame.hidden=true; imgSlide.hidden=false;
+    imgSlide.src=s.src;
+    stage=1;
+    [...dotsEl.children].forEach((d,i)=>d.classList.toggle('on', i<3));
+  }
+  fit();
+}
+function next(){
+  const s=slides[idx];
+  if(s.type==='img' || stage>=3){
+    if(idx<slides.length-1) showSlide(idx+1);
+  } else setStage(stage+1);
+}
+function prev(){
+  const s=slides[idx];
+  if(s.type==='html' && stage>0) setStage(stage-1);
+  else if(idx>0){ showSlide(idx-1); if(slides[idx].type==='html') setStage(3); }
+}
+function startPresent(i){
+  presenting=true;
+  stageEl.hidden=false;
+  showSlide(i||0);
+  fit();
+  hud.classList.add('show'); setTimeout(()=>hud.classList.remove('show'),2500);
+  if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(()=>{});
+}
+function exitPresent(){
+  presenting=false;
+  stageEl.hidden=true;
+  if(document.exitFullscreen && document.fullscreenElement) document.exitFullscreen().catch(()=>{});
+}
+document.getElementById('presentBtn').onclick=()=>startPresent(0);
+document.getElementById('exitBtn').onclick=exitPresent;
+document.getElementById('backBtn').onclick=e=>{e.stopPropagation();prev();};
+document.getElementById('clicker').addEventListener('click', e=>{ e.stopPropagation(); next(); });
+stageEl.addEventListener('click', e=>{
+  if(e.target.closest('#hud')) return;
+  next();
+});
+document.addEventListener('keydown', e=>{
+  if(!presenting) return;
+  if(['ArrowRight',' ','PageDown','Enter'].includes(e.key)){ e.preventDefault(); next(); }
+  else if(['ArrowLeft','PageUp'].includes(e.key)){ e.preventDefault(); prev(); }
+  else if(e.key==='Escape'){ exitPresent(); }
+  else if(e.key==='Home'){ e.preventDefault(); showSlide(0); }
+  else if(e.key==='End'){ e.preventDefault(); showSlide(slides.length-1); if(slides[idx].type==='html') setStage(3); }
+});
+/* touch swipe */
+let tx0=null;
+stageEl.addEventListener('touchstart',e=>{tx0=e.touches[0].clientX;},{passive:true});
+stageEl.addEventListener('touchend',e=>{
+  if(tx0===null) return;
+  const dx=e.changedTouches[0].clientX-tx0;
+  if(Math.abs(dx)>60){ dx<0?next():prev(); tx0=null; e.stopPropagation(); }
+},{passive:true});
+
+loadUploads();
+fit();
+</script>
+</body>
+</html>

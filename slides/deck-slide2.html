@@ -1,0 +1,62 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+@font-face { font-family:'Orbitron'; src:url('../fonts/Orbitron-900.ttf'); font-weight:900; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-400.ttf'); font-weight:400; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-700.ttf'); font-weight:700; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1920px; height:1080px; position:relative; overflow:hidden;
+  background:#101a55; font-family:'Inter',sans-serif; }
+.bg { position:absolute; inset:0; width:1920px; height:1080px; object-fit:cover; }
+.scrim { position:absolute; inset:0;
+  background:
+    radial-gradient(1000px 600px at 70% 40%, rgba(5,7,22,.55) 0%, rgba(5,7,22,0) 70%),
+    linear-gradient(180deg, rgba(5,7,22,.45) 0%, rgba(5,7,22,0) 35%); }
+.photo { position:absolute; left:80px; top:170px; width:700px; height:700px;
+  border-radius:26px; overflow:hidden;
+  border:2px solid rgba(140,160,255,.35);
+  box-shadow:0 0 60px rgba(40,70,200,.5), 0 20px 50px rgba(0,0,0,.5); }
+.photo img { width:100%; height:100%; object-fit:cover; object-position:62% 50%; }
+.right { position:absolute; left:860px; top:170px; width:980px; }
+.right h2 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:60px; line-height:1.18;
+  color:#fff; letter-spacing:1px; text-shadow:0 4px 26px rgba(0,0,0,.9); }
+.right .sub { margin-top:26px; font-size:32px; line-height:1.5; color:#e6e9fb; max-width:900px;
+  text-shadow:0 3px 18px rgba(0,0,0,.9); }
+.right .sub b { color:#22d3ee; font-weight:700; }
+.cards { position:absolute; left:860px; top:520px; width:980px; display:flex; gap:20px; }
+.card { flex:1; height:380px; border-radius:20px;
+  background:linear-gradient(165deg, rgba(20,26,70,.72), rgba(10,12,35,.78));
+  border:1px solid rgba(150,170,255,.28);
+  box-shadow:0 14px 40px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.12);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; padding:18px 10px; }
+.card img { filter:drop-shadow(0 0 22px rgba(90,110,255,.55)); }
+.card .lbl { margin-top:16px; font-family:'Orbitron',sans-serif; font-weight:900; font-size:21px;
+  letter-spacing:3px; text-align:center;
+  background:linear-gradient(180deg,#ffffff 0%,#e2e6f8 24%,#8b92ba 47%,#ffffff 53%,#a7aed4 76%,#f4f6ff 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 2px 10px rgba(0,0,0,.9)); }
+</style></head><body>
+<img class="bg" src="../evolution-background-v3.png">
+<div class="scrim"></div>
+<div class="photo" data-stage="3"><img src="../art/media-generation-deck-slide2-cranking-0-06580d6d-3fe6-4d5a-9281-3b5de1a21d24.webp"></div>
+<div class="right">
+  <h2 data-stage="1">It Started With a Problem in Trucking</h2>
+  <div class="sub" data-stage="2">It Didn&rsquo;t Start With Crypto. It Started With a <b>Truck Driver.</b></div>
+</div>
+<div class="cards" data-stage="3">
+  <div class="card">
+    <img src="../assets/ultralift-crank-transparent.png" width="205">
+    <div class="lbl">ULTRALIFT</div>
+  </div>
+  <div class="card">
+    <img src="../art/arrow-solid-v1.png" height="215">
+    <div class="lbl">SMART TOOL</div>
+  </div>
+  <div class="card">
+    <img src="../assets/rhodeum-tool-transparent.png" width="205">
+    <div class="lbl">RHODEUM MINER</div>
+  </div>
+  <div class="card">
+    <img src="../assets/rhodeum-beacon-transparent.png" width="175">
+    <div class="lbl">RHODEUM BEACON</div>
+  </div>
+</div>
+</body></html>

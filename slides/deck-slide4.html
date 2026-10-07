@@ -1,0 +1,69 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+@font-face { font-family:'Orbitron'; src:url('../fonts/Orbitron-900.ttf'); font-weight:900; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-400.ttf'); font-weight:400; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-700.ttf'); font-weight:700; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1920px; height:1080px; position:relative; overflow:hidden;
+  background:#101a55; font-family:'Inter',sans-serif; }
+.bg { position:absolute; inset:0; width:1920px; height:1080px; object-fit:cover; }
+.scrim { position:absolute; inset:0;
+  background:radial-gradient(1100px 500px at 50% 6%, rgba(5,7,22,.62) 0%, rgba(5,7,22,0) 70%); }
+.head { position:absolute; top:44px; left:0; width:1920px; text-align:center; }
+.head h2 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:62px; letter-spacing:2px;
+  background:linear-gradient(93deg,#7aa8ff 0%,#3b82f6 40%,#06b6d4 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 22px rgba(0,0,0,.8)); }
+.head .s1 { margin-top:12px; font-size:32px; color:#fff; font-weight:700;
+  text-shadow:0 3px 16px rgba(0,0,0,.9); }
+.head .s2 { margin-top:10px; font-size:25px; color:#cfd6f5; line-height:1.5;
+  text-shadow:0 2px 14px rgba(0,0,0,.9); }
+.cards { position:absolute; left:120px; top:300px; width:1680px; display:flex; gap:20px; }
+.card { flex:1; border-radius:22px; padding:20px 14px 22px;
+  background:linear-gradient(165deg, rgba(255,255,255,.14), rgba(255,255,255,.04) 40%, rgba(20,26,70,.55));
+  border:1px solid rgba(170,190,255,.35);
+  box-shadow:0 16px 44px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.25);
+  backdrop-filter:blur(6px);
+  display:flex; flex-direction:column; align-items:center; }
+.card .im { width:272px; height:230px; border-radius:14px; overflow:hidden;
+  border:1px solid rgba(150,170,255,.25);
+  box-shadow:0 8px 26px rgba(0,0,0,.4); }
+.card .im img { width:100%; height:100%; object-fit:cover; }
+.card .lbl { margin-top:18px; font-size:26px; font-weight:700; color:#fff; text-align:center;
+  line-height:1.4; text-shadow:0 2px 14px rgba(0,0,0,.9); min-height:76px;
+  display:flex; align-items:center; }
+.foot { position:absolute; left:0; top:724px; width:1920px; text-align:center;
+  font-size:31px; line-height:1.7; color:#e8ebfb; padding:0 120px;
+  text-shadow:0 3px 16px rgba(0,0,0,.9); }
+.foot b { color:#22d3ee; }
+</style></head><body>
+<img class="bg" src="../evolution-background-v3.png">
+<div class="scrim"></div>
+<div class="head">
+  <h2>REAL INDUSTRY ADOPTION</h2 data-stage="1">
+  <div class="s1" data-stage="2">From Owner-Operators to Major Fleets</div>
+  <div class="s2" data-stage="2">A Solution Built for the Real World<br>UltraLift has served:</div>
+</div>
+<div class="cards" data-stage="3">
+  <div class="card">
+    <div class="im"><img src="../art/media-generation-deck-s4-factory-0-ee12384c-410a-4fc8-9816-1b70b562660a.webp"></div>
+    <div class="lbl">Owner-operators</div>
+  </div>
+  <div class="card">
+    <div class="im"><img src="../art/media-generation-deck-s4-fleet-0-44314e81-de96-4464-8a33-307580a3c298.webp"></div>
+    <div class="lbl">Small &amp; Midsize Fleets</div>
+  </div>
+  <div class="card">
+    <div class="im"><img src="../art/media-generation-deck-s4-depot-0-49341dfd-40e5-4940-a984-a27b175f7068.webp"></div>
+    <div class="lbl">Large Fleet Operations</div>
+  </div>
+  <div class="card">
+    <div class="im"><img src="../art/media-generation-deck-s4-logistics-0-0e45d9e6-ed8d-4077-8dff-328faef439b3.webp"></div>
+    <div class="lbl">Logistics Organizations</div>
+  </div>
+  <div class="card">
+    <div class="im"><img src="../art/media-generation-deck-s4-corporate-0-62919259-b419-4052-8dd1-9541ad16932a.webp"></div>
+    <div class="lbl">Major Corporate Customers</div>
+  </div>
+</div>
+<div class="foot">Customer history has included names such as: <b>Divisions of Coca-Cola</b> | <b>Penske</b> | <b>FujiFilm</b> | <b>Ryder</b> | <b>BEHR Paint</b> | <b>Boeing</b> | <b>DHL</b> &amp; many other fortune 100 &amp; 500 companies</div>
+</body></html>

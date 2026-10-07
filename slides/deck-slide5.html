@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+@font-face { font-family:'Orbitron'; src:url('../fonts/Orbitron-900.ttf'); font-weight:900; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-400.ttf'); font-weight:400; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-700.ttf'); font-weight:700; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1920px; height:1080px; position:relative; overflow:hidden;
+  background:#101a55; font-family:'Inter',sans-serif; }
+.bg { position:absolute; inset:0; width:1920px; height:1080px; object-fit:cover; }
+.scrim { position:absolute; inset:0;
+  background:radial-gradient(1100px 480px at 50% 6%, rgba(5,7,22,.62) 0%, rgba(5,7,22,0) 70%); }
+.head { position:absolute; top:48px; left:0; width:1920px; text-align:center; }
+.head h2 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:62px; letter-spacing:2px;
+  line-height:1.25;
+  background:linear-gradient(93deg,#7aa8ff 0%,#3b82f6 40%,#06b6d4 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 22px rgba(0,0,0,.8)); }
+.head .q { margin-top:16px; font-size:32px; color:#eef1fd; font-style:italic;
+  text-shadow:0 3px 16px rgba(0,0,0,.9); }
+.arrow { position:absolute; left:80px; top:320px; width:720px;
+  filter:drop-shadow(0 0 30px rgba(60,120,255,.35)); }
+.alabel { position:absolute; font-size:30px; color:#f2f4ff; font-weight:400;
+  text-shadow:0 3px 16px rgba(0,0,0,.95); white-space:nowrap; }
+.qcard { position:absolute; left:1120px; top:500px; width:700px; border-radius:26px;
+  padding:44px 40px;
+  background:linear-gradient(165deg, rgba(255,255,255,.13), rgba(255,255,255,.04) 40%, rgba(20,26,70,.6));
+  border:1px solid rgba(170,190,255,.35);
+  box-shadow:0 18px 50px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.22); }
+.qcard .row { display:flex; align-items:center; gap:28px; }
+.qcard .row img { width:150px; height:150px; object-fit:contain;
+  filter:drop-shadow(0 0 26px rgba(120,140,255,.7)); }
+.qcard .qt { font-family:'Orbitron',sans-serif; font-weight:900; font-size:34px; line-height:1.45;
+  background:linear-gradient(93deg,#7aa8ff 0%,#3b82f6 45%,#06b6d4 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 3px 14px rgba(0,0,0,.7)); }
+.qcard .qb { margin-top:30px; font-size:29px; letter-spacing:2px; color:#fff; font-weight:700;
+  text-shadow:0 3px 14px rgba(0,0,0,.9); }
+</style></head><body>
+<img class="bg" src="../evolution-background-v3.png">
+<div class="scrim"></div>
+<div class="head">
+  <h2>THE QUESTION THAT<br>CHANGED EVERYTHING</h2 data-stage="1">
+  <div class="q" data-stage="2">&ldquo;Does your tool capture real-time data?&rdquo;</div>
+</div>
+<img class="arrow" data-stage="3" src="../art/slide5-arrow-v2.png">
+<div class="alabel" data-stage="3" style="left:60px; top:978px;">Insurance Inquiry</div>
+<div class="alabel" data-stage="3" style="left:60px; top:680px;">R&amp;D</div>
+<div class="alabel" data-stage="3" style="left:120px; top:485px;">Smart Tool</div>
+<div class="alabel" data-stage="3" style="left:648px; top:308px;">Rhodeum</div>
+<div class="qcard" data-stage="3">
+  <div class="row">
+    <img src="../art/slide5-question-v1.png">
+    <div class="qt">Does Your Tool Capture Real-time Data?</div>
+  </div>
+  <div class="qb">ONE QUESTION CHANGED THE ROADMAP.</div>
+</div>
+</body></html>

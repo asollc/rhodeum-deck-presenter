@@ -1,0 +1,53 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+@font-face { font-family:'Orbitron'; src:url('../fonts/Orbitron-900.ttf'); font-weight:900; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-400.ttf'); font-weight:400; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-700.ttf'); font-weight:700; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1920px; height:1080px; position:relative; overflow:hidden;
+  background:#101a55; font-family:'Inter',sans-serif; }
+.bg { position:absolute; inset:0; width:1920px; height:1080px; object-fit:cover; }
+.scrim { position:absolute; inset:0;
+  background:radial-gradient(1000px 500px at 30% 30%, rgba(5,7,22,.55) 0%, rgba(5,7,22,0) 70%); }
+.left { position:absolute; left:80px; top:90px; width:760px; }
+.left h2 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:64px; line-height:1.3;
+  background:linear-gradient(93deg,#7aa8ff 0%,#3b82f6 40%,#06b6d4 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 22px rgba(0,0,0,.8)); }
+.left .rh { margin-top:28px; font-family:'Orbitron',sans-serif; font-weight:900; font-size:44px;
+  color:#fff; letter-spacing:3px; text-shadow:0 4px 20px rgba(0,0,0,.9); }
+.left .iot { margin-top:14px; font-size:30px; color:#dfe4fa;
+  text-shadow:0 3px 14px rgba(0,0,0,.9); }
+.miner { position:absolute; left:80px; top:470px; width:760px; text-align:center; }
+.miner img { filter:drop-shadow(0 0 44px rgba(120,140,255,.65)) drop-shadow(0 18px 36px rgba(0,0,0,.5)); }
+.right { position:absolute; left:960px; top:180px; width:880px; display:flex;
+  flex-direction:column; gap:34px; }
+.g3d { position:relative; }
+.g3d .depth { position:absolute; left:14px; top:14px; right:-14px; bottom:-14px; border-radius:20px;
+  background:linear-gradient(135deg, #31429e 0%, #1a2568 55%, #0d1338 100%);
+  box-shadow:0 18px 44px rgba(0,0,0,.45); }
+.g3d .glass { position:relative; border-radius:20px; padding:30px 40px;
+  background:linear-gradient(165deg, rgba(255,255,255,.16), rgba(255,255,255,.05) 40%, rgba(20,26,70,.55));
+  border:1px solid rgba(170,190,255,.4);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.35), inset 0 -4px 12px rgba(0,0,0,.3),
+    inset 2px 0 0 rgba(255,255,255,.12);
+  font-size:33px; font-weight:700; color:#fff; text-align:center;
+  text-shadow:0 3px 14px rgba(0,0,0,.9); }
+</style></head><body>
+<img class="bg" src="../evolution-background-v3.png">
+<div class="scrim"></div>
+<div class="left">
+  <h2>Where the Physical data-stage="1" World Meets the Blockchain</h2>
+  <div class="rh" data-stage="2">RHODEUM MINER</div>
+  <div class="iot" data-stage="2">Industrial IoT + Automation + Blockchain</div>
+  <div class="miner" data-stage="3">
+    <img src="../assets/rhodeum-tool-transparent.png" width="600">
+  </div>
+</div>
+<div class="right" data-stage="3">
+  <div class="g3d"><div class="depth"></div><div class="glass">Truck Driver</div></div>
+  <div class="g3d"><div class="depth"></div><div class="glass">Smart Tool</div></div>
+  <div class="g3d"><div class="depth"></div><div class="glass">Operational Data</div></div>
+  <div class="g3d"><div class="depth"></div><div class="glass">Network Validation</div></div>
+  <div class="g3d"><div class="depth"></div><div class="glass">Digital Rewards</div></div>
+</div>
+</body></html>

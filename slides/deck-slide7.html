@@ -1,0 +1,53 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+@font-face { font-family:'Orbitron'; src:url('../fonts/Orbitron-900.ttf'); font-weight:900; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-400.ttf'); font-weight:400; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-700.ttf'); font-weight:700; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1920px; height:1080px; position:relative; overflow:hidden;
+  background:#101a55; font-family:'Inter',sans-serif; }
+.bg { position:absolute; inset:0; width:1920px; height:1080px; object-fit:cover; }
+.scrim { position:absolute; inset:0;
+  background:radial-gradient(1100px 480px at 50% 6%, rgba(5,7,22,.62) 0%, rgba(5,7,22,0) 70%); }
+.head { position:absolute; top:36px; left:0; width:1920px; text-align:center; }
+.head h2 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:58px; letter-spacing:2px;
+  background:linear-gradient(93deg,#7aa8ff 0%,#3b82f6 40%,#06b6d4 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 22px rgba(0,0,0,.8)); }
+.head .s1 { margin-top:10px; font-size:30px; color:#fff; font-weight:700;
+  text-shadow:0 3px 16px rgba(0,0,0,.9); }
+.head .s2 { margin-top:10px; font-size:26px; letter-spacing:2px; color:#d5dbf7; font-weight:700;
+  text-shadow:0 3px 16px rgba(0,0,0,.9); }
+.spine { position:absolute; left:920px; top:300px; width:80px; height:700px; border-radius:40px;
+  background:linear-gradient(180deg, #22d3ee 0%, #5b6cf0 30%, #8b5cf6 55%, #22d3ee 80%, #5b6cf0 100%);
+  box-shadow:0 0 40px rgba(80,140,255,.5); }
+.node { position:absolute; width:190px; height:190px; border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #232a6e, #0d1230 70%);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 14px 40px rgba(0,0,0,.5), inset 0 2px 6px rgba(255,255,255,.15); }
+.node.cyan { border:7px solid #22d3ee; box-shadow:0 0 34px rgba(34,211,238,.55), 0 14px 40px rgba(0,0,0,.5); }
+.node.purple { border:7px solid #8b5cf6; box-shadow:0 0 34px rgba(139,92,246,.55), 0 14px 40px rgba(0,0,0,.5); }
+.node img { width:150px; height:150px; object-fit:contain;
+  filter:drop-shadow(0 0 18px rgba(120,140,255,.6)); }
+.nlabel { position:absolute; font-size:29px; color:#f2f4ff; line-height:1.5; max-width:420px;
+  text-shadow:0 3px 16px rgba(0,0,0,.95); transform:translateY(-50%); }
+.nlabel b { font-weight:700; }
+</style></head><body>
+<img class="bg" src="../evolution-background-v3.png">
+<div class="scrim"></div>
+<div class="head">
+  <h2>WHY THE DATA MATTERS</h2 data-stage="1">
+  <div class="s1" data-stage="2">Turning Physical Activity Into Useful Information</div>
+  <div class="s2" data-stage="2">ONE TOOL &#8594; MULTIPLE USE CASES</div>
+</div>
+<div class="spine" data-stage="3"></div>
+<div class="node data-stage="3" cyan" style="left:865px; top:255px;"><img src="../art/s7-shield-v2.png"></div>
+<div class="node data-stage="3" purple" style="left:865px; top:405px;"><img src="../art/s7-eye-v2.png"></div>
+<div class="node data-stage="3" cyan" style="left:865px; top:555px;"><img src="../art/s7-gear-v2.png"></div>
+<div class="node data-stage="3" purple" style="left:865px; top:705px;"><img src="../art/s7-clock-v3.png"></div>
+<div class="node data-stage="3" cyan" style="left:865px; top:855px;"><img src="../art/s7-data-v2.png" style="width:172px; height:172px;"></div>
+<div class="nlabel" data-stage="3" style="left:1100px; top:350px;"><b>Drivers</b> Safety + Accountability</div>
+<div class="nlabel" data-stage="3" style="right:1100px; top:500px; text-align:right;"><b>FLEETS</b> Operational visibility</div>
+<div class="nlabel" data-stage="3" style="left:1100px; top:650px;"><b>MAINTENANCE</b> Equipment<br>Health Indicators</div>
+<div class="nlabel" data-stage="3" style="right:1100px; top:800px; text-align:right;"><b>INSURANCE</b> Verifiable event history</div>
+<div class="nlabel" data-stage="3" style="left:1100px; top:950px;"><b>RHODEUM</b> Real-world data generation</div>
+</body></html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+@font-face { font-family:'Orbitron'; src:url('../fonts/Orbitron-900.ttf'); font-weight:900; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-400.ttf'); font-weight:400; }
+@font-face { font-family:'Inter'; src:url('../fonts/Inter-700.ttf'); font-weight:700; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { width:1920px; height:1080px; position:relative; overflow:hidden;
+  background:#101a55; font-family:'Inter',sans-serif; }
+.bg { position:absolute; inset:0; width:1920px; height:1080px; object-fit:cover; }
+.scrim { position:absolute; inset:0;
+  background:radial-gradient(1100px 480px at 50% 6%, rgba(5,7,22,.62) 0%, rgba(5,7,22,0) 70%); }
+.head { position:absolute; top:48px; left:0; width:1920px; text-align:center; }
+.head h2 { font-family:'Orbitron',sans-serif; font-weight:900; font-size:62px; letter-spacing:2px;
+  background:linear-gradient(93deg,#7aa8ff 0%,#3b82f6 40%,#06b6d4 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 4px 22px rgba(0,0,0,.8)); }
+.head .sub { margin-top:12px; font-size:33px; color:#fff; font-weight:700;
+  text-shadow:0 3px 16px rgba(0,0,0,.9); }
+.tl { position:absolute; left:100px; top:250px; }
+.cards { position:absolute; left:100px; top:360px; width:1720px; display:flex; gap:40px; }
+.c3d { position:relative; flex:1; }
+.c3d .depth { position:absolute; left:20px; top:20px; right:-20px; bottom:-20px; border-radius:24px;
+  background:linear-gradient(135deg, #31429e 0%, #1a2568 55%, #0d1338 100%);
+  box-shadow:0 24px 60px rgba(0,0,0,.5); }
+.c3d .face { position:relative; border-radius:24px; overflow:hidden; height:600px;
+  background:linear-gradient(170deg, #141b45, #0a0e28 70%);
+  border:1px solid rgba(150,170,255,.3);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.35), inset 0 -4px 12px rgba(0,0,0,.4),
+    inset 2px 0 0 rgba(255,255,255,.12); }
+.chead { padding:30px 20px; text-align:center; font-size:31px; font-weight:700; color:#fff;
+  line-height:1.4; text-shadow:0 3px 12px rgba(0,0,0,.5);
+  box-shadow:inset 0 2px 0 rgba(255,255,255,.45), inset 0 -6px 14px rgba(0,0,0,.25); }
+.chead.cyan { background:linear-gradient(160deg, #4fd8f7 0%, #1fa8e8 60%, #1488c8 100%); }
+.chead.purple { background:linear-gradient(160deg, #8b7cf8 0%, #5f54e8 60%, #4538c8 100%); }
+.cbody { padding:40px 24px; text-align:center; font-size:28px; line-height:2; color:#dfe4fa;
+  text-shadow:0 2px 12px rgba(0,0,0,.9); }
+</style></head><body>
+<img class="bg" src="../evolution-background-v3.png">
+<div class="scrim"></div>
+<div class="head">
+  <h2>WHY BLOCKCHAIN?</h2 data-stage="1">
+  <div class="sub" data-stage="2">From Data to Verifiable Transactions</div>
+</div>
+<svg class="tl" data-stage="3" width="1720" height="70" viewBox="0 0 1720 70">
+  <defs>
+    <radialGradient id="bC" cx="35%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#aef3ff"/><stop offset="45%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#0e7a9e"/>
+    </radialGradient>
+    <radialGradient id="bP" cx="35%" cy="30%" r="80%">
+      <stop offset="0%" stop-color="#d3c9ff"/><stop offset="45%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#4a34a8"/>
+    </radialGradient>
+    <linearGradient id="tube" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e4ff9e"/><stop offset="45%" stop-color="#a3e635"/>
+      <stop offset="100%" stop-color="#4d7c0f"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <rect x="200" y="27" width="1360" height="16" rx="8" fill="url(#tube)"/>
+    <polygon points="1560,20 1600,35 1560,50" fill="#a3e635"/>
+  </g>
+  <g>
+    <circle cx="200" cy="35" r="24" fill="url(#bC)"/>
+    <circle cx="640" cy="35" r="24" fill="url(#bP)"/>
+    <circle cx="1080" cy="35" r="24" fill="url(#bC)"/>
+    <circle cx="1520" cy="35" r="24" fill="url(#bP)"/>
+  </g>
+</svg>
+<div class="cards" data-stage="3">
+  <div class="c3d"><div class="depth"></div><div class="face">
+    <div class="chead cyan">Driver uses<br>Rhodeum Miner</div>
+    <div class="cbody">Physical activity</div>
+  </div></div>
+  <div class="c3d"><div class="depth"></div><div class="face">
+    <div class="chead purple">Data<br>generated</div>
+    <div class="cbody">Time<br>Location<br>Usage<br>Torque<br>Activity</div>
+  </div></div>
+  <div class="c3d"><div class="depth"></div><div class="face">
+    <div class="chead cyan">Validation</div>
+    <div class="cbody">Rhodeum<br>Network</div>
+  </div></div>
+  <div class="c3d"><div class="depth"></div><div class="face">
+    <div class="chead purple">Blockchain<br>record</div>
+    <div class="cbody">Verifiable<br>transaction<br>history</div>
+  </div></div>
+</div>
+</body></html>
